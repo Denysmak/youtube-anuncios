@@ -1,0 +1,381 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Youtube</title>
+    <link rel="shortcut icon" href="images/oipc.png" type="image/x-icon">
+    
+    <script async="" src="js/fbevents.js"></script><script src="js/latest.js" async="" defer=""></script>
+
+   
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    
+        html, body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            background-color: #ececec;
+        }
+        body{
+            background-color: rgba(0, 0, 0, 0.39);
+            z-index: 5;
+           overflow: hidden;
+        }
+        #header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+    
+        #Saldo {
+            font-size: 11pt;
+            padding: 10px 15px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39);
+        }
+    
+        div#container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            max-width: 600px;
+            padding: 20px 30px;
+            border-radius: 15px;
+        }
+    
+        div#container2 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            max-width: 600px;
+        }
+    
+        div#container3 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            max-width: 600px;
+            padding: 20px 30px;
+            border-radius: 15px;
+        }
+
+        div#container4 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            max-width: 600px;
+            padding: 20px 30px;
+            border-radius: 15px;
+        }
+
+        div#container5 {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            max-width: 600px;
+            padding: 20px 30px;
+            border-radius: 15px;
+        }
+    
+        @keyframes pulse {
+            0% {
+            transform: scale(1);
+            }
+            50% {
+            transform: scale(1.05);
+            }
+            100% {
+            transform: scale(1);
+            }
+        }
+    
+        .pulsating-button {
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Esconder inputs de rádio */
+        .rating input {
+            display: none;
+        }
+
+        /* Estilo inicial das estrelas oca */
+        .rating label {
+            cursor: pointer;
+            font-size: 30px;
+            color: #000000; /* Cor das estrelas oca */
+        }
+
+        /* Quando o input de rádio está marcado, muda a cor das estrelas */
+        .rating input:checked ~ label {
+            color: #FFD700; /* Cor das estrelas coloridas */
+        }
+
+        /* Inverter a ordem das estrelas */
+        .rating {
+            direction: rtl;
+            display: flex;
+            gap: 20px;
+        }
+        .popup{
+          
+            border-radius: 30px;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 80%;
+            width: 55%;
+            z-index: 2;
+            min-width: 260px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 4% 0;
+        }
+
+        .popup img{
+            width: 100%;
+            max-width: 600px;
+        }
+        .popup button{
+            background-color: rgb(8, 100, 204);
+            border: none;
+            color: white;
+            width: 80%;
+            height: 50px;
+            border-radius: 20px;
+        }
+        @media (min-width: 900px){
+            .popup{
+               
+                height: 80%;
+                max-width: 500px;
+                padding: 3% 0;
+             
+            }
+
+        }
+        @media (max-width: 700px){
+            .popup{
+                padding: 4% 0;
+                height: 65%;
+             
+            }
+        }
+        @media (max-width: 650px){
+            .popup{
+              
+                height: 60%;
+             
+            }
+        }
+        @media (max-width: 600px){
+            .popup{
+               
+                height: 65%;
+                width: 65%;
+            }
+        }
+        @media (max-width: 550px){
+            .popup{
+               
+                height: 60%;
+                width: 70%;
+                min-width: 300px;
+            }
+        }
+
+        
+    </style>
+    <script src="js/player_2.js" async=""></script><script src="js/player_1_1.js" async=""></script><script src="js/player_1.js" async=""></script><script src="js/player.js" async=""></script></head>
+    <body>
+    <header class="container-fluid my-3 px-4" id="header">
+        <img src="images/logo.png" style="width: 160px; height: 40px;" alt="">
+        <h5 class="text-light bg-success" id="Saldo">Balance: $<span id="Saldo-value">19.27</span></h5>
+    </header>
+
+    <div class="popup">
+        <img src="images/imagemPopup.png" alt="imagem popup">
+        <button id="botaoPopup">HAGA CLIC AQUÍ Y COMIENCE</button>
+    </div>
+
+    <hr>
+    
+    <div id="content" class="text-center" style="display: block;">
+        <div class="alert alert-success alert-dismissible fade show mx-3" role="alert">
+            🔔 Congratulations on your first access! <strong>get +$19.27 as a gift!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="container c1 mb-5" id="container">
+            <span style="font-size: 15pt;"><strong>Moana 2 - Official First Trailer (2024)</strong></span>
+            <div id="vid_65fc500c25bfc3000822e895" style="position:relative;width:100%;padding: 56.25% 0 0;"> <img id="thumb_65fc500c25bfc3000822e895" src="images/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"> <div id="backdrop_65fc500c25bfc3000822e895" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div> </div> <script type="text/javascript" id="scr_65fc500c25bfc3000822e895"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/978c9c93-dbb1-4819-8706-3e8e8c459e61/players/65fc500c25bfc3000822e895/player.js", s.async=!0,document.head.appendChild(s); </script>    
+        <h5 class="text-dark">Did you like the new release?</h5>
+            <div style="display: flex; justify-content: center; gap: 40px;">
+                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado(this.parentNode)">👎 Did not like</button>
+                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado(this.parentNode)">👍 I liked</button>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    
+
+    <div id="content2" class="text-center" style="display: block;">
+        <div class="container c1 mb-5" id="container2">
+            <span style="font-size: 15pt;"><strong>Avatar - The Last Airbender</strong></span>
+
+            <div id="vid_65fc5008d07af9000806affe" style="position:relative;width:100%;padding: 56.25% 0 0;"> 
+                <img id="thumb_65fc5008d07af9000806affe" src="images/thumbnail_1.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"> 
+                <div id="backdrop_65fc5008d07af9000806affe" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);">
+
+                </div>
+             </div> 
+            
+            
+            <script type="text/javascript" id="scr_65fc5008d07af9000806affe"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/978c9c93-dbb1-4819-8706-3e8e8c459e61/players/65fc5008d07af9000806affe/player.js", s.async=!0,document.head.appendChild(s); </script>           
+            <h5 class="text-dark">Did you like the new release?</h5>
+            <div style="display: flex; justify-content: center; gap: 40px;">
+                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado2(this.parentNode)">👎 Did not like</button>
+                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado2(this.parentNode)">👍 I liked</button>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div id="content3" class="text-center" style="display: block;">
+        <div class="container c1 mb-5" id="container2">
+            <span style="font-size: 15pt;"><strong>Avatar - The Last Airbender</strong></span>
+            <div id="vid_65fc5008d07af9000806affe" style="position:relative;width:100%;padding: 56.25% 0 0;"> <img id="thumb_65fc5008d07af9000806affe" src="images/thumbnail_1.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"> <div id="backdrop_65fc5008d07af9000806affe" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div> </div> 
+            <script type="text/javascript" id="scr_65fc5008d07af9000806affe"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/978c9c93-dbb1-4819-8706-3e8e8c459e61/players/65fc5008d07af9000806affe/player.js", s.async=!0,document.head.appendChild(s); </script>           
+            <h5 class="text-dark">Did you like the new release?</h5>
+            <div style="display: flex; justify-content: center; gap: 40px;">
+                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado2(this.parentNode)">👎 Did not like</button>
+                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado2(this.parentNode)">👍 I liked</button>
+            </div>
+        </div>
+        <hr>
+    </div>
+    
+    
+    
+    
+    
+    <div class="container p-3 text-center c3 rounded" id="container3" style="display: none;">
+        <h3 class="mb-1 text-light bg-danger p-2 rounded">YOUR BALANCE IS NOW</h3>
+        <img src="images/moeda.png" height="300px" alt="">
+        <h5 class="text-light bg-success" id="Saldo">Balance: $<span id="Saldo-final">49.27</span></h5>
+        <div class="my-1">Congratulations!</div>
+        <div class="my-1" style="color: gray;">To make your withdrawal, <strong>watch a 4-minute video</strong></div><br>
+        <button id="watchTutorialButton" class="btn btn-success pulsating-button" style="width: 100%; font-size: 15pt;" onclick="irPraChave()">WATCH VIDEO</button>
+
+    </div>
+
+
+    <div class="text-dark text-center container my-3">All rights reserved - 100% Safe and Reliable</div>
+    
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        var popup = document.querySelector('.popup');
+        var botaoPopup = document.getElementById('botaoPopup')
+        var content = document.getElementById('content');
+        var content2 = document.getElementById('content2');
+        var content3 = document.getElementById('content3')
+        var container3 = document.getElementById('container3');
+        var body = document.getElementsByTagName('body')
+        botaoPopup.addEventListener('click', function(){    
+          
+            document.body.style.backgroundColor = '#ececec';
+            document.body.style.overflow = 'visible';
+            popup.style.display = 'none'
+            
+
+        })
+
+
+        var btnObrigado = '<div class="alert alert-success mx-3" role="alert">Thanks for reviewing! You received: +$<span id="received-amount">15.00</span></div>';
+        var receivedAmount = 19.27;
+        
+        document.getElementById("watchTutorialButton").addEventListener("click", function() {
+                window.location.href = "https://descobertohoje.site/vslguru/";
+            });
+        function addBtnObrigado(e) {
+            e.innerHTML = btnObrigado;
+            increaseSaldo(34.27);
+            var audio = new Audio('./cash.mp3');
+            audio.play();
+            setTimeout(() => {
+                window.scrollBy(0, 300);
+            }, 700);
+        }
+    
+        function addBtnObrigado2(e) {
+            e.innerHTML = btnObrigado;
+            increaseSaldo(49.27);
+            content.remove();
+            content2.remove();
+            content3.remove();
+            container3.style.display ="block";
+            var audio = new Audio('./cash.mp3');
+            audio.play();
+        }
+    
+        function increaseSaldo(v) {
+            var increment = 0.10;
+            var interval = 1; // Tempo em milissegundos entre cada incremento
+            var finalAmount = v;
+            var receivedAmountElement = document.getElementById('Saldo-value');
+            var SaldoFinal = document.getElementById('Saldo-final');
+    
+            var timer = setInterval(function() {
+                receivedAmount += increment;
+                receivedAmountElement.textContent = receivedAmount.toFixed(2);
+                SaldoFinal.textContent = receivedAmount.toFixed(2);
+    
+                if (receivedAmount >= finalAmount) {
+                    clearInterval(timer);
+                    receivedAmountElement.textContent = finalAmount.toFixed(2);
+                    SaldoFinal.textContent = finalAmount.toFixed(2);
+                }
+            }, interval);
+        }
+        
+    </script>
+    
+    
+    
+</body></html>
