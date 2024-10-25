@@ -156,7 +156,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            height: 75%;
+            /* height: 75%; */
             max-width: 500px;
             padding: 3% 0;
             width: 55%;
@@ -182,52 +182,6 @@
             width: 80%;
             height: 50px;
             border-radius: 20px;
-        }
-        @media (max-width: 900px){
-            .popup{
-               
-                height: 70%;
-             
-             
-            }
-
-        }
-        @media (max-width: 800px){
-            .popup{
-                padding: 4% 0;
-                height: 60%;
-             
-            }
-        }
-        @media (max-width: 700px){
-            .popup{
-              
-                height: 50%;
-             
-            }
-        }
-        @media (max-width: 600px){
-            .popup{
-               
-                height: 50%;
-                width: 65%;
-            }
-        }
-        @media (max-width: 530px){
-            .popup{
-               
-                height: 50%;
-                width: 70%;
-                min-width: 300px;
-            }
-        }
-        @media (max-width: 450px){
-            .popup{
-               
-                height: 45%;
-                width: 60%;
-                min-width: 300px;
-            }
         }
 
 
@@ -287,8 +241,8 @@
         
             <h5 class="text-dark">Did you like the new release?</h5>
             <div style="display: flex; justify-content: center; gap: 40px;">
-                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado(this.parentNode)">👎 Did not like</button>
-                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado(this.parentNode)">👍 I liked</button>
+                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado2(this.parentNode)">👎 Did not like</button>
+                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado2(this.parentNode)">👍 I liked</button>
             </div>
         </div>
         
@@ -306,8 +260,8 @@
         
             <h5 class="text-dark">Did you like the new release?</h5>
             <div style="display: flex; justify-content: center; gap: 40px;">
-                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado(this.parentNode)">👎 Did not like</button>
-                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado(this.parentNode)">👍 I liked</button>
+                <button class="btn bg-light text-primary border-primary" id="btn-nao" style="width: 150px;" onclick="addBtnObrigado3(this.parentNode)">👎 Did not like</button>
+                <button class="btn bg-primary text-light" id="btn-sim" style="width: 150px;" onclick="addBtnObrigado3(this.parentNode)">👍 I liked</button>
             </div>
         </div>
         <hr>
@@ -362,26 +316,58 @@
         document.getElementById("watchTutorialButton").addEventListener("click", function() {
                 window.location.href = "https://descobertohoje.site/vslguru/";
             });
-        function addBtnObrigado(e) {
-            e.innerHTML = btnObrigado;
-            increaseSaldo(34.27);
-            var audio = new Audio('./cash.mp3');
-            audio.play();
-            setTimeout(() => {
-                window.scrollBy(0, 300);
-            }, 700);
-        }
-    
-        function addBtnObrigado2(e) {
-            e.innerHTML = btnObrigado;
-            increaseSaldo(49.27);
-            content.remove();
-            content2.remove();
-            content3.remove();
-            container3.style.display ="block";
-            var audio = new Audio('./cash.mp3');
-            audio.play();
-        }
+
+// Variável global para contar as execuções
+let countBtnObrigado = 0;
+
+function addBtnObrigado(e) {
+    e.innerHTML = btnObrigado;
+    increaseSaldo(25.27);
+    var audio = new Audio('./cash.mp3');
+    audio.play();
+    setTimeout(() => {
+        window.scrollBy(0, 300);
+    }, 700);
+  
+    countBtnObrigado++;
+
+    if (countBtnObrigado === 3) {
+        addBtnObrigado3(e);
+    }
+}
+
+
+function addBtnObrigado2(e) {
+    e.innerHTML = btnObrigado;
+    increaseSaldo(34.27);
+    var audio = new Audio('./cash.mp3');
+    audio.play();
+    setTimeout(() => {
+        window.scrollBy(0, 300);
+    }, 700);
+  
+    countBtnObrigado++;
+
+    if (countBtnObrigado === 3) {
+        addBtnObrigado3(e);
+    }
+}
+
+
+function addBtnObrigado3(e) {
+ 
+    e.innerHTML = btnObrigado;
+    increaseSaldo(49.27);
+    content.remove();
+    content2.remove();
+    content3.remove();
+    container3.style.display = "block";
+    var audio = new Audio('./cash.mp3');
+
+    audio.play();
+}
+
+
     
         function increaseSaldo(v) {
             var increment = 0.10;
