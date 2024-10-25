@@ -310,7 +310,7 @@
         })
 
 
-        var btnObrigado = '<div class="alert alert-success mx-3" role="alert">Thanks for reviewing! You received: +$<span id="received-amount">15.00</span></div>';
+        var btnObrigado = '<div class="alert alert-success mx-3" role="alert">Thanks for reviewing! You received: +$<span id="received-amount">10.00</span></div>';
         var receivedAmount = 19.27;
         
         document.getElementById("watchTutorialButton").addEventListener("click", function() {
@@ -322,46 +322,53 @@ let countBtnObrigado = 0;
 
 function addBtnObrigado(e) {
     e.innerHTML = btnObrigado;
-    increaseSaldo(25.27);
+    increaseSaldo(10);
     var audio = new Audio('./cash.mp3');
     audio.play();
     setTimeout(() => {
         window.scrollBy(0, 300);
     }, 700);
-  
-    countBtnObrigado++;
-
-    if (countBtnObrigado === 3) {
-        addBtnObrigado3(e);
+    if (countBtnObrigado == 2){
+        chamapopup()
     }
+    
+    countBtnObrigado++;
+  
 }
 
 
 function addBtnObrigado2(e) {
     e.innerHTML = btnObrigado;
-    increaseSaldo(34.27);
+    increaseSaldo(10);
     var audio = new Audio('./cash.mp3');
     audio.play();
     setTimeout(() => {
         window.scrollBy(0, 300);
     }, 700);
-  
-    countBtnObrigado++;
-
-    if (countBtnObrigado === 3) {
-        addBtnObrigado3(e);
+    if(countBtnObrigado == 2){
+        chamapopup()
     }
+    countBtnObrigado++;
+    
+
 }
 
-
-function addBtnObrigado3(e) {
- 
-    e.innerHTML = btnObrigado;
-    increaseSaldo(49.27);
+function chamapopup(){
     content.remove();
     content2.remove();
     content3.remove();
     container3.style.display = "block";
+  
+}
+
+function addBtnObrigado3(e) {
+
+    e.innerHTML = btnObrigado;
+    increaseSaldo(10);
+    if(countBtnObrigado === 2){
+        chamapopup()
+    }
+
     var audio = new Audio('./cash.mp3');
 
     audio.play();
@@ -369,25 +376,26 @@ function addBtnObrigado3(e) {
 
 
     
-        function increaseSaldo(v) {
-            var increment = 0.10;
-            var interval = 1; // Tempo em milissegundos entre cada incremento
-            var finalAmount = v;
-            var receivedAmountElement = document.getElementById('Saldo-value');
-            var SaldoFinal = document.getElementById('Saldo-final');
+function increaseSaldo(v) {
+    var increment = 0.10;
+    var interval = 1; // Tempo em milissegundos entre cada incremento
+    var finalAmount = receivedAmount + v; // Incrementa o valor atual com o argumento
+    var receivedAmountElement = document.getElementById('Saldo-value');
+    var SaldoFinal = document.getElementById('Saldo-final');
     
-            var timer = setInterval(function() {
-                receivedAmount += increment;
-                receivedAmountElement.textContent = receivedAmount.toFixed(2);
-                SaldoFinal.textContent = receivedAmount.toFixed(2);
-    
-                if (receivedAmount >= finalAmount) {
-                    clearInterval(timer);
-                    receivedAmountElement.textContent = finalAmount.toFixed(2);
-                    SaldoFinal.textContent = finalAmount.toFixed(2);
-                }
-            }, interval);
+    var timer = setInterval(function() {
+        receivedAmount += increment;
+        receivedAmountElement.textContent = receivedAmount.toFixed(2);
+        SaldoFinal.textContent = receivedAmount.toFixed(2);
+
+        if (receivedAmount >= finalAmount) {
+            clearInterval(timer);
+            receivedAmountElement.textContent = finalAmount.toFixed(2);
+            SaldoFinal.textContent = finalAmount.toFixed(2);
         }
+    }, interval);
+}
+
         
     </script>
     
